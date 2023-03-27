@@ -1,0 +1,71 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API manipulação de alunos, desafio delta.",
+    "description": "Essa API tem como objetivo a manipulação de alunos.",
+    "termsOfService": "http://localhost:3333/terms",
+    "contact": {
+      "email": "johndoe@example.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333",
+      "description": "API de teste"
+    }
+  ],
+  "paths": {
+    "/students": {
+      "post": {
+        "summary": "Cadastro de aluno.",
+        "description": "Essa rota será responsável por cadastrar um novo aluno.",
+        "tags": ["Students"],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "file to upload",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Student": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "required": true
+          },
+          "username": {
+            "type": "string",
+            "required": true
+          },
+          "adress": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string",
+            "format": "binary"
+          }  
+        }
+      }
+    }
+  }
+}
